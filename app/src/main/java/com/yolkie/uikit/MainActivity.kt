@@ -19,7 +19,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -74,8 +73,13 @@ fun MainApp(
                 modifier = Modifier.fillMaxSize()
             )
         }
-        composable(Screen.PARALLAX_SCROLLING.name) {
-            ParallaxScrollingScreen(modifier = Modifier.fillMaxSize())
+        composable(Screen.YELP_DETAIL.name) {
+            YelpDetailScreen(
+                modifier = Modifier.fillMaxSize(),
+                onBackClicked = {
+                    navController.popBackStack()
+                }
+            )
         }
     }
 }
@@ -91,7 +95,7 @@ fun MainScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "UIKit")
+                    Text(text = "UI Playground")
                 }
             )
         }
@@ -105,26 +109,14 @@ fun MainScreen(
         ) {
             FilledTonalButton(
                 onClick = {
-                    onButtonClicked(Screen.PARALLAX_SCROLLING)
+                    onButtonClicked(Screen.YELP_DETAIL)
                 }
             ) {
-                Text(text = "Parallax Scrolling")
+                Text(text = "Yelp Detail Screen")
             }
         }
     }
 }
-
-//@Composable
-//fun ParallaxScrollingScreen() {
-//    Column(
-//        modifier = Modifier.fillMaxSize(),
-//        horizontalAlignment = Alignment.CenterHorizontally,
-//    ) {
-//        FilledTonalButton(onClick = { /*TODO*/ }) {
-//            Text(text = "Hiya Parallax!")
-//        }
-//    }
-//}
 
 
 @Preview(showBackground = true)
